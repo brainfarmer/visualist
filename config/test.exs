@@ -12,7 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :trackermapper, Trackermapper.Repo,
   adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
-  database: "trackermapper_test",
+  username: System.get_env("DATABASE_MYSQL_USERNAME") || "root",
+  password: System.get_env("DATABASE_MYSQL_PASSWORD") || "",
+  database: System.get_env("DATABASE_NAME_TEST") || "test_db",
+  port:     3306,
   size: 1 # Use a single connection for transactional tests
