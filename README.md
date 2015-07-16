@@ -1,7 +1,7 @@
-# Trackermapper
+# Visualist
 
 [![Build
-Status](https://semaphoreci.com/api/v1/projects/003f8279-da95-44c0-95d3-89e2ea9f2464/472254/badge.svg)](https://semaphoreci.com/brainfarmer/trackermapper)      
+Status](https://semaphoreci.com/api/v1/projects/3fc5fc45-5342-48dc-a858-60715027a6f2/485926/badge.svg)](https://semaphoreci.com/brainfarmer/visualist)
 
 Visualize your tracker backlog as story map.
 
