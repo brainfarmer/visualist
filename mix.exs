@@ -18,7 +18,7 @@ defmodule Trackermapper.Mixfile do
   def application do
     [mod: {Trackermapper, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :mariaex]]
+                    :phoenix_ecto, :mariaex, :httpoison]]
   end
 
   # Specifies which paths to compile per environment
@@ -30,11 +30,12 @@ defmodule Trackermapper.Mixfile do
   # Type `mix help deps` for examples and options
   defp deps do
     [{:phoenix, "~> 0.13.1"},
-     {:phoenix_ecto, "~> 0.4"},
-     {:mariaex, "~> 0.1.0"},
-     {:phoenix_html, "~> 1.0"},
-     {:phoenix_live_reload, "~> 0.4", only: :dev},
-     {:cowboy, "~> 1.0"},
-     {:exrm, "~> 0.15.3"}]
+    {:phoenix_ecto, "~> 0.4"},
+    {:mariaex, "~> 0.1.0"},
+    {:phoenix_html, "~> 1.0"},
+    {:phoenix_live_reload, "~> 0.4", only: :dev},
+    {:cowboy, "~> 1.0"},
+    {:exrm, "~> 0.15.3"},
+    {:httpoison, "~>0.7"}]
   end
 end
