@@ -8,7 +8,7 @@ defmodule TrackerIntegrationTest do
 	@epics_url "/epics"
 	@stories_url "/stories"
 	
-  @tracker_mapper_tracker_id "1334474"
+  @tracker_mapper_tracker_id "1389518"
   @ja_api_token 'aa6c95ad3b28fa8520fa75b298a533f4'   # jose's token
 
   @test_project_id  @tracker_mapper_tracker_id
