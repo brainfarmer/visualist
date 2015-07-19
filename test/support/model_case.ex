@@ -1,4 +1,4 @@
-defmodule Trackermapper.ModelCase do
+defmodule Visualist.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -17,16 +17,16 @@ defmodule Trackermapper.ModelCase do
   using do
     quote do
       # Alias the data repository and import query/model functions
-      alias Trackermapper.Repo
+      alias Visualist.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
-      import Trackermapper.ModelCase
+      import Visualist.ModelCase
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Trackermapper.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Visualist.Repo, [])
     end
 
     :ok

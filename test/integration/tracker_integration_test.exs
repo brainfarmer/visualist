@@ -4,14 +4,14 @@
 defmodule TrackerIntegrationTest do
   use ExUnit.Case
 
-	
+
 	@epics_url "/epics"
 	@stories_url "/stories"
-	
-  @tracker_mapper_tracker_id "1389518"
+
+  @visualist_tracker_id "1389518"
   @ja_api_token 'aa6c95ad3b28fa8520fa75b298a533f4'   # jose's token
 
-  @test_project_id  @tracker_mapper_tracker_id
+  @test_project_id  @visualist_tracker_id
   @test_api_token @ja_api_token
 
   test "GET Epics from tracker" do

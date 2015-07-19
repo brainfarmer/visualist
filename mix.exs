@@ -1,8 +1,8 @@
-defmodule Trackermapper.Mixfile do
+defmodule Visualist.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :trackermapper,
+    [app: :visualist,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -16,7 +16,7 @@ defmodule Trackermapper.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {Trackermapper, []},
+    [mod: {Visualist, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
                     :phoenix_ecto, :mariaex, :httpoison]]
   end

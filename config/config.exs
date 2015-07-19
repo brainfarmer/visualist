@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :trackermapper, Trackermapper.Endpoint,
+config :visualist, Visualist.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "UCjiLbNxq3AmRHaAcr6EIhiHK4T1pvevcSBv1Jxp0d0aTKQj4N47AJg1aNnbC90K",
   debug_errors: false,
-  pubsub: [name: Trackermapper.PubSub,
+  pubsub: [name: Visualist.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

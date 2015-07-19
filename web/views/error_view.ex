@@ -1,5 +1,5 @@
-defmodule Trackermapper.ErrorView do
-  use Trackermapper.Web, :view
+defmodule Visualist.ErrorView do
+  use Visualist.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

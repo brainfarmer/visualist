@@ -1,5 +1,5 @@
-defmodule Trackermapper.Router do
-  use Trackermapper.Web, :router
+defmodule Visualist.Router do
+  use Visualist.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,7 +12,7 @@ defmodule Trackermapper.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Trackermapper do
+  scope "/", Visualist do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
@@ -20,7 +20,7 @@ defmodule Trackermapper.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Trackermapper do
+  # scope "/api", Visualist do
   #   pipe_through :api
   # end
 end

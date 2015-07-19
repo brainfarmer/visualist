@@ -1,5 +1,5 @@
-defmodule Trackermapper.PageController do
-  use Trackermapper.Web, :controller
+defmodule Visualist.PageController do
+  use Visualist.Web, :controller
 
   plug :action
 

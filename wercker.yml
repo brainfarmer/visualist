@@ -11,7 +11,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: test
       MYSQL_PASSWORD: password
-      MYSQL_DATABASE: trackermapper_test
+      MYSQL_DATABASE: visualist_test
 
 build:
   steps:

@@ -1,5 +1,5 @@
-defmodule Trackermapper.PageControllerTest do
-  use Trackermapper.ConnCase
+defmodule Visualist.PageControllerTest do
+  use Visualist.ConnCase
 
   test "GET /" do
     conn = get conn(), "/"

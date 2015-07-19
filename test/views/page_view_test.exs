@@ -1,3 +1,3 @@
-defmodule Trackermapper.PageViewTest do
-  use Trackermapper.ConnCase, async: true
+defmodule Visualist.PageViewTest do
+  use Visualist.ConnCase, async: true
 end

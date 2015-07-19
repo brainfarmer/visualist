@@ -1,4 +1,4 @@
-defmodule Trackermapper.ChannelCase do
+defmodule Visualist.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,19 +21,19 @@ defmodule Trackermapper.ChannelCase do
       use Phoenix.ChannelTest
 
       # Alias the data repository and import query/model functions
-      alias Trackermapper.Repo
+      alias Visualist.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
 
       # The default endpoint for testing
-      @endpoint Trackermapper.Endpoint
+      @endpoint Visualist.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Trackermapper.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Visualist.Repo, [])
     end
 
     :ok

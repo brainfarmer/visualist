@@ -1,3 +1,3 @@
-defmodule Trackermapper.PageView do
-  use Trackermapper.Web, :view
+defmodule Visualist.PageView do
+  use Visualist.Web, :view
 end
