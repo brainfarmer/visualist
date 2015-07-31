@@ -16,11 +16,12 @@ defmodule Visualist.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/map", MapController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Visualist do
-  #   pipe_through :api
-  # end
+  scope "/api", Visualist do
+    pipe_through :api
+
+    resources "/projects", ProjectController
+  end
 end

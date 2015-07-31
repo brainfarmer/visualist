@@ -12,6 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :visualist, Visualist.Repo,
   adapter: Ecto.Adapters.MySQL,
+  pool: Ecto.Adapters.SQL.Sandbox,
   username: System.get_env("DATABASE_MYSQL_USERNAME") || "root",
   password: System.get_env("DATABASE_MYSQL_PASSWORD") || "",
   database: System.get_env("DATABASE_NAME_TEST") || "test_db",
