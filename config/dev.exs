@@ -33,3 +33,6 @@ config :visualist, Visualist.Repo,
   password: "",
   database: "visualist_dev",
   size: 10 # The amount of database connections in the pool
+
+# Interim test API tokens until we get a way to manage users
+config :visualist, test_api_token: "aa6c95ad3b28fa8520fa75b298a533f4"

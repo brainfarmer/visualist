@@ -21,6 +21,7 @@ defmodule TrackerIntegrationTest do
       TrackerInfo.test_project_id(), @stories_url)
 
 		assert status == :ok
+    assert JSX.is_json?(response.body)
 		assert String.match?(response.body, ~r/"kind":"story"/)
 	end
 end

@@ -18,3 +18,6 @@ config :visualist, Visualist.Repo,
   database: System.get_env("DATABASE_NAME_TEST") || "test_db",
   port:     3306,
   size: 1 # Use a single connection for transactional tests
+
+# Interim test API tokens until we get a way to manage users
+config :visualist, test_api_token: "aa6c95ad3b28fa8520fa75b298a533f4"

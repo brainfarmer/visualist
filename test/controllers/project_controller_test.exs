@@ -9,10 +9,9 @@ defmodule Visualist.ProjectControllerTest do
       |> get("/api/projects/" <> TrackerInfo.test_project_id)
 
     assert conn.status == 200
-
-    # convert response to map, check map for epics and stories
-    assert String.match?(conn.resp_body, ~r/epic/)
-    assert String.match?(conn.resp_body, ~r/story/)
+    assert JSX.is_json?(conn.resp_body)
+    assert String.match?(conn.resp_body, ~r/"kind":"epic"/)
+    assert String.match?(conn.resp_body, ~r/"kind":"story"/)
 
     # JGS: not quite sure why the following regex expressions fail
     #  they work in the tracker_integration_test module, there must be someway
