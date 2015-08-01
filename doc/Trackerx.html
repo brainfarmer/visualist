@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Trackerx</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      hljs.initHighlightingOnLoad();
+      hljs.configure({languages: []}); //disable autodetect
+    </script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">Visualist v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Trackerx.html">Trackerx</a></div>
+      <h1>
+        Trackerx
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+          <li><a href="#types_details">Types</a></li>
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+      </ul>
+
+      
+        <section id="moduledoc" class="docstring">
+          <p>Provides an API wrapper for Pivotal Tracker</p>
+
+        </section>
+      
+
+      
+        <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L1" class="view_source">Source</a>
+      
+
+      
+        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#call_get/3">call_get(api_token, project_id, url)</a></td>
+  
+    <td class="summary_synopsis"><p>Issue a GET call to the Tracker API with the given endpoint</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#delete!/3">delete!(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a DELETE request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#delete/3">delete(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a DELETE request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get!/3">get!(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a GET request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#get/3">get(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a GET request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#head!/3">head!(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a HEAD request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#head/3">head(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a HEAD request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#options!/3">options!(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a OPTIONS request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#options/3">options(url, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues an OPTIONS request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#patch!/4">patch!(url, body, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a PATCH request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#patch/4">patch(url, body, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a PATCH request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#post!/4">post!(url, body, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a POST request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#post/4">post(url, body, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a POST request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#put!/4">put!(url, body, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a PUT request to the given url, raising an exception in case of
+failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#put/4">put(url, body, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues a PUT request to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#request!/5">request!(method, url, body \\ &quot;&quot;, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues an HTTP request with the given method to the given url, raising an
+exception in case of failure</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#request/5">request(method, url, body \\ &quot;&quot;, headers \\ [], options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Issues an HTTP request with the given method to the given url</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#start/0">start()</a></td>
+  
+    <td class="summary_synopsis"><p>Starts HTTPoison and its dependencies</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+        <section id="types_details" class="details_list">
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:headers/0">
+    <a href="#t:headers/0">headers</a> :: [{binary, binary}]
+  </p>
+  
+</div>
+
+        </section>
+      
+
+      
+        <section id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <section class="detail">
+  <div class="detail_header" id="call_get/3">
+    <span class="signature"><strong>call_get(api_token, project_id, url)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#call_get/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>call_get(String, String, String) :: {integer | :error, String}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issue a GET call to the Tracker API with the given endpoint.</p>
+<p>Args:</p>
+<ul>
+<li>api_token - the Pivotal Tracker user’s API token for access
+</li>
+<li>project_id - the id of the project the request should be made against
+</li>
+<li>url - the endpoint
+</li>
+</ul>
+<p>Returns:
+  {http_status_code, body} - the status code of the Tracker request and the response body
+  {:error, reason} - occurs when the Tracker API cannot be reached</p>
+<h2>Example</h2>
+<pre><code class="iex elixir">iex&gt; response = Trackerx.call_get(&quot;aa6c95ad3b28fa8520fa75b298a533f4&quot;, &quot;1389518&quot;, &quot;/epics&quot;)</code></pre>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L33" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="delete/3">
+    <span class="signature"><strong>delete(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#delete/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>delete(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a DELETE request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="delete!/3">
+    <span class="signature"><strong>delete!(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#delete!/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>delete!(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a DELETE request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="get/3">
+    <span class="signature"><strong>get(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#get/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>get(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a GET request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="get!/3">
+    <span class="signature"><strong>get!(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#get!/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>get!(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a GET request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="head/3">
+    <span class="signature"><strong>head(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#head/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>head(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a HEAD request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="head!/3">
+    <span class="signature"><strong>head!(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#head!/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>head!(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a HEAD request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="options/3">
+    <span class="signature"><strong>options(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#options/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>options(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues an OPTIONS request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="options!/3">
+    <span class="signature"><strong>options!(url, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#options!/3" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>options!(binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a OPTIONS request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="patch/4">
+    <span class="signature"><strong>patch(url, body, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#patch/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>patch(binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a PATCH request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="patch!/4">
+    <span class="signature"><strong>patch!(url, body, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#patch!/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>patch!(binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a PATCH request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="post/4">
+    <span class="signature"><strong>post(url, body, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#post/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>post(binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a POST request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="post!/4">
+    <span class="signature"><strong>post!(url, body, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#post!/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>post!(binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a POST request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="put/4">
+    <span class="signature"><strong>put(url, body, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#put/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>put(binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a PUT request to the given url.</p>
+<p>Returns <code class="inline">{:ok, response}</code> if the request is successful, <code class="inline">{:error, reason}</code>
+otherwise.</p>
+<p>See <a href="#request/5"><code class="inline">request/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="put!/4">
+    <span class="signature"><strong>put!(url, body, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#put!/4" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>put!(binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t | HTTPoison.AsyncResponse.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues a PUT request to the given url, raising an exception in case of
+failure.</p>
+<p>If the request does not fail, the response is returned.</p>
+<p>See <a href="#request!/5"><code class="inline">request!/5</code></a> for more detailed information.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="request/5">
+    <span class="signature"><strong>request(method, url, body \\ &quot;&quot;, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#request/5" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>request(atom, binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: {:ok, HTTPoison.Response.t | HTTPoison.AsyncResponse.t} | {:error, HTTPoison.Error.t}</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues an HTTP request with the given method to the given url.</p>
+<p>Args:</p>
+<ul>
+<li><code class="inline">method</code> - HTTP method as an atom (<code class="inline">:get</code>, <code class="inline">:head</code>, <code class="inline">:post</code>, <code class="inline">:put</code>,
+<code class="inline">:delete</code>, etc.)
+</li>
+<li><code class="inline">url</code> - target url as a binary string or char list
+</li>
+<li><code class="inline">body</code> - request body as a binary string or char list
+</li>
+<li><code class="inline">headers</code> - HTTP headers as an orddict (e.g., `[{:Accept,
+"application/json"}]`)
+</li>
+<li><code class="inline">options</code> - orddict of options
+</li>
+</ul>
+<p>Options:</p>
+<ul>
+<li><code class="inline">:timeout</code> - the timeout (in milliseconds) of the request
+</li>
+<li><code class="inline">:stream_to</code> - a PID to stream the response to
+</li>
+<li><code class="inline">:proxy</code> - a proxy to be used for the request; it can by a regular url
+or a <code class="inline">{Host, Proxy}</code> tuple
+</li>
+</ul>
+<p>This function returns <code class="inline">{:ok, response}</code> or <code class="inline">{:ok, async_response}</code> if the
+request is successful, <code class="inline">{:error, reason}</code> otherwise.</p>
+<h2>Examples</h2>
+<pre><code class="elixir">request(:post, &quot;https://my.website.com&quot;, &quot;{\&quot;foo\&quot;: 3}&quot;, [{&quot;Accept&quot;, &quot;application/json&quot;}])</code></pre>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="request!/5">
+    <span class="signature"><strong>request!(method, url, body \\ &quot;&quot;, headers \\ [], options \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#request!/5" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+    <p>Specs:</p>
+    <ul class="spec">
+      
+        <li>request!(atom, binary, binary, <a href="#t:headers/0">headers</a>, [{atom, any}]) :: HTTPoison.Response.t</li>
+      
+    </ul>
+  
+  <section class="docstring">
+    <p>Issues an HTTP request with the given method to the given url, raising an
+exception in case of failure.</p>
+<p><a href="#request!/5"><code class="inline">request!/5</code></a> works exactly like <a href="#request/5"><code class="inline">request/5</code></a> but it returns just the
+response in case of a successful request, raising an exception in case the
+request fails.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="start/0">
+    <span class="signature"><strong>start()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#start/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Starts HTTPoison and its dependencies.</p>
+
+  </section>
+  
+    <a href="https://github.com/brainfarmer/visualist/blob/master/lib/trackerx.ex#L5" class="view_source">Source</a>
+  
+</section>
+
+        </section>
+      
+
+      
+
+      
+    </section>
+  </body>
+</html>

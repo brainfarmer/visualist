@@ -4,6 +4,8 @@ defmodule Visualist.Mixfile do
   def project do
     [app: :visualist,
      version: "0.0.1",
+     name: "Visualist",
+     source_url: "https://github.com/brainfarmer/visualist",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix] ++ Mix.compilers,
@@ -37,6 +39,8 @@ defmodule Visualist.Mixfile do
     {:cowboy, "~> 1.0"},
     {:exrm, "~> 0.15.3"},
     {:httpoison, "~>0.7"},
-    {:exjsx, "~>3.2.0"}]
+    {:exjsx, "~>3.2.0"},
+    {:earmark, "~> 0.1", only: :dev},
+    {:ex_doc, "~> 0.7", only: :dev}]
   end
 end

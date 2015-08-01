@@ -11,8 +11,8 @@ defmodule TrackerIntegrationTest do
     {status, response} = Trackerx.call_get(TrackerInfo.test_api_token(),
       TrackerInfo.test_project_id(), @epics_url)
 
-    assert status == :ok
-    # Raw json should contain epic types
+    assert status == 200
+    assert JSX.is_json?(response.body)
     assert String.match?(response.body, ~r/"kind":"epic"/)
   end
 
@@ -20,8 +20,15 @@ defmodule TrackerIntegrationTest do
 		{status, response} = Trackerx.call_get(TrackerInfo.test_api_token(),
       TrackerInfo.test_project_id(), @stories_url)
 
-		assert status == :ok
+		assert status == 200
     assert JSX.is_json?(response.body)
 		assert String.match?(response.body, ~r/"kind":"story"/)
 	end
+
+  test "GET epics/stories with bad project id returns error" do
+    {status, response} = Trackerx.call_get(TrackerInfo.test_api_token(),
+      "0", @epics_url)
+
+    assert status > 400
+  end
 end
