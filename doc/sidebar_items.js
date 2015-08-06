@@ -1,6 +1,6 @@
 sidebarNodes = {
   "modules": [
-    {"id": "MyApp.UserSocket",
+    {"id": "visualist.UserSocket",
 "docs": ["channel_for_topic/2","connect/2","id/1"]
 },{"id": "Trackerx",
 "docs": ["call_get/3","delete/3","delete!/3","get/3","get!/3","head/3","head!/3","options/3","options!/3","patch/4","patch!/4","post/4","post!/4","put/4","put!/4","request/5","request!/5","start/0"]

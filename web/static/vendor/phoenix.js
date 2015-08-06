@@ -123,7 +123,7 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 // events are listened for, messages are pushed to the server, and
 // the channel is joined with ok/error matches, and `after` hook:
 //
-//     let chan = socket.chan("rooms:123", {token: roomToken})
+//     let chan = socket.channel("rooms:123", {token: roomToken})
 //     chan.on("new_msg", msg => console.log("Got message", msg) )
 //     $input.onEnter( e => {
 //       chan.push("new_msg", {body: e.target.val})

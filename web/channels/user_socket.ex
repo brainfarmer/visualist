@@ -1,8 +1,8 @@
-defmodule MyApp.UserSocket do
+defmodule Visualist.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "rooms:*", MyApp.RoomChannel
+  # channel "rooms:*", visualist.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -15,7 +15,10 @@ defmodule MyApp.UserSocket do
   #
   #     {:ok, assign(socket, :user_id, verified_user_id)}
   #
-  #  To deny connection, return `:error`.
+  # To deny connection, return `:error`.
+  #
+  # See `Phoenix.Token` documentation for examples in
+  # performing token verification on connect.
   def connect(_params, socket) do
     {:ok, socket}
   end
@@ -27,7 +30,7 @@ defmodule MyApp.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     MyApp.Endpoint.broadcast("users_socket:" <> user.id, "disconnect", %{})
+  #     visualist.Endpoint.broadcast("users_socket:" <> user.id, "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil
