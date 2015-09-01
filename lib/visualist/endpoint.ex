@@ -34,5 +34,8 @@ defmodule Visualist.Endpoint do
     key: "_visualist_key",
     signing_salt: "z0DZ9G0w"
 
+  # Enable CORS header return
+  plug CORSPlug
+
   plug :router, Visualist.Router
 end

@@ -23,7 +23,10 @@ erl_crash.dump
 # variables.
 /config/prod.secret.exs
 
-# Ignore releases from locoal build
+# Ignore releases from local build
 /rel
 /_builds
 /_projects
+
+# Ingore OSX files
+.DS_Store

@@ -36,6 +36,7 @@ defmodule Visualist.Mixfile do
     {:mariaex, "~> 0.4.2"},
     {:phoenix_html, "~> 2.0"},
     {:phoenix_live_reload, "~> 0.5", only: :dev},
+    {:cors_plug, "~> 0.1.3"},
     {:cowboy, "~> 1.0"},
     {:exrm, "~> 0.15.3"},
     {:httpoison, "~>0.7"},
