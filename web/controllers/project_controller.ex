@@ -10,10 +10,16 @@ defmodule Visualist.ProjectController do
     # render conn, "show.json", project: response_epics.body <> response_stories.body
     # render conn, "show.json", project: response_epics.body
 
-    response = "{\"project\":["
-      <> "{\"epics\":"    <> response_epics.body <> "}"
-      <> ",{\"stories\":"  <> response_stories.body <> "}"
-      <> "]}"
+    # response = "{\"project\":["
+    #   <> "{\"epics\":"    <> response_epics.body <> "}"
+    #   <> ",{\"stories\":"  <> response_stories.body <> "}"
+    #   <> "]}"
+
+    response = "{"
+      <> "\"epics\":" <> response_epics.body
+      <> ",\"stories\":" <> response_stories.body
+      <> "}"
+
     conn
       |> put_resp_content_type("application/json")
       |> send_resp(200, response)
