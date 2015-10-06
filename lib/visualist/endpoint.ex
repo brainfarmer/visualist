@@ -37,5 +37,5 @@ defmodule Visualist.Endpoint do
   # Enable CORS header return
   plug CORSPlug
 
-  plug :router, Visualist.Router
+  plug Visualist.Router
 end

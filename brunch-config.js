@@ -27,6 +27,13 @@ exports.config = {
     }
   },
 
+  conventions: {
+    // This option sets where we should place non-css and non-js assets in.
+    // By default, we set this to "/web/static/assets". Files in this directory
+    // will be copied to `paths.public`, which is "priv/static" by default.
+    assets: /^(web\/static\/assets)/
+  },
+
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
@@ -42,7 +49,17 @@ exports.config = {
   plugins: {
     babel: {
       // Do not use ES6 compiler in vendor code
-      ignore: [/^(web\/static\/vendor)/]
+      ignore: [/(web\/static\/vendor)/]
     }
+  },
+
+  modules: {
+    autoRequire: {
+      'js/app.js': ['web/static/js/app']
+    }
+  },
+
+  npm: {
+    enabled: true
   }
 };
