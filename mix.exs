@@ -38,7 +38,6 @@ defmodule Visualist.Mixfile do
     {:phoenix_live_reload, "~> 1.0", only: :dev},
     {:cors_plug, "~> 0.1.3"},
     {:cowboy, "~> 1.0"},
-    {:exrm, "~> 0.15.3"},
     {:httpoison, "~>0.7"},
     {:exjsx, "~>3.2.0"},
     {:earmark, "~> 0.1", only: :dev},
