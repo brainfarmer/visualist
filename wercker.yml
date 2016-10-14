@@ -7,3 +7,12 @@ dev:
       name: test
       code: |
         mix test
+
+# Build pipeline
+build:
+  steps:
+    - script:
+        name: test
+        code: |
+          mix test
+          
