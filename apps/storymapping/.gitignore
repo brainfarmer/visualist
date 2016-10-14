@@ -3,9 +3,3 @@
 /deps
 erl_crash.dump
 *.ez
-
-# Backup modes
-*~
-\#*\#
-
-.\#*

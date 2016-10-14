@@ -1,54 +1,9 @@
-box: jszod/elixir-mysql:latest
-services:
-  - id: mariadb
-    # your credential for dock hub
-    #      username: $USERNAME
-    #      password: $PASSWORD
-    #      tag: latest
+box: elixir
 
-    # set the required environment variables
-    env:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: test
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: visualist_test
-
-build:
+# Dev pipeline
+dev:
   steps:
-    #    - script:
-    #        name: append PATH for EctoRIADB_ENV_MYSQL_ROOT_PASSWORD
-    #        code: |
-    #          PATH=$PATH:$MARIADB_NAME
-  - script:
-      name: echo environment variables
+    - script:
+      name: test
       code: |
-        export
-  - script:
-      name: check db status
-      code: |
-        ping $MARIADB_PORT_3306_TCP_ADDR -c 4
-        mysqladmin -h$MARIADB_PORT_3306_TCP_ADDR --password=$MARIADB_ENV_MYSQL_ROOT_PASSWORD status
-
-    # run unit tests
-    #    - script:
-    #        name: Get dependencies
-    #        code: |
-    #          mix deps.get
-    #    - script:
-    #        name: Compile sources
-    #        code: |
-    #          mix compile
-    #      #    - phoenix.digest
-    #      #    - MIX_ENV=test mix do deps.get, deps.compile, ecto.create, ecto.migrate
-  - script:
-      name: mix environment variables
-      code: |
-        echo "root pwd: $MARIADB_ENV_MYSQL_ROOT_PASSWORD"
-        echo "database: $MARIADB_ENV_MYSQL_DATABASE"
-        echo "host: $MARIADB_PORT_3306_TCP_ADDR"
-        echo "port: $MARIADB_PORT_3306_TCP_PORT"
-  - script:
-      name: Run unit tests
-      code: |
-          MIX_ENV=test  mix do deps.clean --all, deps.get, deps.compile
-          MIX_ENV=test mix test
+        mix test
