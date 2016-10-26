@@ -3,9 +3,14 @@
 /deps
 erl_crash.dump
 *.ez
+.DS_STORE
 
-# Backup modes
+# Emacs Backup modes
 *~
 \#*\#
-
 .\#*
+
+# Wercker
+vendor/*/
+wercker
+.wercker

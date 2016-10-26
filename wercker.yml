@@ -7,7 +7,7 @@ dev:
       name: test
       code: |
         mix test
-
+        
 # Build pipeline
 build:
   steps:
@@ -15,4 +15,8 @@ build:
         name: test
         code: |
           mix test
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        usernamre: wercker-bot
           
