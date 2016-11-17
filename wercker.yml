@@ -15,6 +15,7 @@ build:
         name: test
         code: |
           mix test
+          
   after-steps:
     - slack-notifier:
         url: $SLACK_URL
