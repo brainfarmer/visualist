@@ -5,7 +5,7 @@ defmodule StoryMap.ServerTest do
 
   alias StoryMap
   alias StoryMap.Server
-  alias HeaderEntry
+  alias StoryMap.HeaderEntry
 
   setup do
     {:ok, storymap_server} = Server.start_link(name: {:global, __MODULE__})

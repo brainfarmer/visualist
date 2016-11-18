@@ -1,5 +1,8 @@
-defmodule HeaderEntry do
-  alias HeaderEntry
+# StoryMap component modules, and structures
+
+
+defmodule StoryMap.HeaderEntry do
+  alias StoryMap.HeaderEntry
 
   defstruct [
     position: nil,  # position/order
@@ -11,8 +14,8 @@ defmodule HeaderEntry do
 end
 
 
-defmodule Card do
-  alias Card
+defmodule StoryMap.Card do
+  alias StoryMap.Card
 
   defstruct [
     title: "", # title text
@@ -25,9 +28,9 @@ defmodule Card do
 end
 
 
-defmodule MapCell do
-  alias MapCell
-  alias Card
+defmodule StoryMap.MapCell do
+  alias StoryMap.MapCell
+  alias StoryMap.Card
 
   defstruct [
     coord: {nil, nil},  # x, y coordinates of the cell
@@ -45,13 +48,13 @@ defmodule MapCell do
 end
 
 
-defmodule StoryMap do
+ defmodule StoryMap do
 
-  alias HeaderEntry
-  alias Card
-  alias MapCell
-  alias StoryMap
+  alias StoryMap.HeaderEntry
+  alias StoryMap.Card
+  alias StoryMap.MapCell
   
+
   defstruct [
     col_headers: [%HeaderEntry{}], # the list of column headers
     row_headers: [%HeaderEntry{}], # the list of row headers

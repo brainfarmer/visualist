@@ -3,9 +3,9 @@ defmodule StoryMap.StoryMapTest do
   doctest StoryMap
 
   alias StoryMap
-  alias HeaderEntry
-  alias Card
-  alias MapCell
+  alias StoryMap.HeaderEntry
+  alias StoryMap.Card
+  alias StoryMap.MapCell
   # @tag :pending
   # test "the truth" do
   #   assert 1 + 1 == 2
