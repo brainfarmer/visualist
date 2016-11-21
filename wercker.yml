@@ -6,6 +6,7 @@ dev:
     - script:
       name: test
       code: |
+        mix local.hex --force
         mix test
         
 # Build pipeline
@@ -14,6 +15,7 @@ build:
     - script:
         name: test
         code: |
+          mix local.hex --force
           mix test
           
   after-steps:
