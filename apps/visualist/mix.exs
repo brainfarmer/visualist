@@ -1,8 +1,8 @@
-defmodule Visualist.StoryMap.Mixfile do
+defmodule Visualist.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :storymap,
+    [app: :visualist,
      version: "0.0.1",
      build_path: "../../_build",
      config_path: "../../config/config.exs",
@@ -18,8 +18,8 @@ defmodule Visualist.StoryMap.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger],
-    mod: {StoryMap.Application, []}]
+    [applications: [:logger, :httpoison],
+    mod: {Visualist, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -36,6 +36,9 @@ defmodule Visualist.StoryMap.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:httpoison, "~> 0.10.0"},
+      {:json,      "~> 1.0"}
+    ]
   end
 end

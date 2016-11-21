@@ -1,5 +1,5 @@
 defmodule StoryMap.StoryMapTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest StoryMap
 
   alias StoryMap

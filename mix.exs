@@ -1,4 +1,4 @@
-defmodule Visualist.Mixfile do
+defmodule VisualistUmbrella.Mixfile do
   use Mix.Project
 
   def project do

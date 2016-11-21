@@ -1,6 +1,10 @@
-defmodule AServer do
+defmodule Visualist do
   use Application
 
+  # def start(_type, args) do
+  #   StoryMap.Server.start_link
+  # end
+  
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
@@ -8,13 +12,14 @@ defmodule AServer do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Starts a worker by calling: AServer.Worker.start_link(arg1, arg2, arg3)
-      # worker(AServer.Worker, [arg1, arg2, arg3]),
+      # Starts a worker by calling: StoryRepo.Worker.start_link(arg1, arg2, arg3)
+      # worker(StoryRepo.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: AServer.Supervisor]
+    opts = [strategy: :one_for_one, name: StoryMap.Supervisor]
     Supervisor.start_link(children, opts)
   end
+
 end
