@@ -4,6 +4,7 @@
 
 Visualize your tracker backlog
 
- - status as traffic light report
- - (future) as story map
+ - as story map
+ - (future) status as traffic light report
+
 
