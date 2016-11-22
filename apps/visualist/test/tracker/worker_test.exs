@@ -23,7 +23,17 @@ defmodule Tracker.WorkerTest do
   test "retrieve epics" do
     {:ok, results} = Worker.get_epics(@test_project_id, @test_api_token)
     assert results[:epics]
-  end  
+  end
+
+  test "invalid project_id returns error" do
+    assert Worker.get_epics_and_stories(1, @test_api_token) == :error
+  end
+
+  test "invalid api_token returns error" do
+    assert Worker.get_epics_and_stories(@test_project_id, "x") == :error
+  end
+  
+  
   
     
 end

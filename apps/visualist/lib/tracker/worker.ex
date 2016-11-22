@@ -47,34 +47,22 @@ Provides Pivotal Tracker API functions
   
   @spec get_backlog_data(entity_type, integer, String.t) :: {:ok, [...]} | :error
   defp get_backlog_data(entity_type, project_id, api_token) do
-    headers = ["x-trackertoken": get_api_token()]
-    url_for(entity_type)
+    headers = ["x-trackertoken": api_token]
+    url_for(entity_type, project_id)
       |> HTTPoison.get(headers)
       |> parse_response
   end
 
   
-  @spec url_for(:atom) :: String.t
-  defp url_for(:epics) do
-    @base_url <> "#{get_project_id()}/epics"
+  @spec url_for(:atom, integer) :: String.t
+  defp url_for(:epics, project_id) do
+    @base_url <> "#{project_id}/epics"
   end
 
   
-  @spec url_for(:atom) :: String.t
-  defp url_for(:stories) do
-    @base_url <> "#{get_project_id()}/stories"
-  end
-
-  
-  defp get_project_id do
-    # Temporarily use Visualist_test project for development
-    "1389518"
-  end
-
-  
-  defp get_api_token do
-    # test token (jagile)
-    "aa6c95ad3b28fa8520fa75b298a533f4"
+  @spec url_for(:atom, integer) :: String.t
+  defp url_for(:stories, project_id) do
+    @base_url <> "#{project_id}/stories"
   end
 
   
@@ -84,7 +72,7 @@ Provides Pivotal Tracker API functions
   end
 
   
-  defp parse_reponse(_) do
+  defp parse_response(_) do
     :error
   end
   
