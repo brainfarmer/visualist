@@ -1,21 +1,34 @@
-box: elixir
+# box: elixir
+# box: msaraiva/elixir-dev
+# box: appcues/elixir-dev
+box: trenpixster/elixir
 
-# Dev pipeline
+# Dev Pipeline
 dev:
-  steps:
     - script:
-      name: test
-      code: |
-        mix local.hex --force
-        mix test
+        name: get and compile dependencies
+        code: |
+          yes | mix local.hex
+          yes | mix do deps.get
+
+    - script:
+        name: test
+        code: |
+          mix test
         
 # Build pipeline
 build:
   steps:
     - script:
+        name: get dependencies
+        code: |
+          yes | mix local.hex
+          yes | mix deps.get
+    - script:
         name: test
         code: |
           mix local.hex --force
+          mix deps.get
           mix test
           
   after-steps:
