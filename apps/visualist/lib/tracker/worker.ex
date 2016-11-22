@@ -10,23 +10,44 @@ Provides Pivotal Tracker API functions
   @doc"""
   Return epics and stories
   """
-  @spec get_epics_and_stories() :: {:ok, [...]} | :error
-  def get_epics_and_stories do
-    epics_results = get_backlog_data(:epics)
-    stories_results = get_backlog_data(:stories)
+  @spec get_epics_and_stories(integer, String.t) :: {:ok, [...]} | :error
+  def get_epics_and_stories(project_id, api_token) do
+    epics_results = get_backlog_data(:epics, project_id, api_token)
+    stories_results = get_backlog_data(:stories, project_id, api_token)
 
     case {epics_results, stories_results} do
       { {:ok, epics}, {:ok, stories} } ->
-	{:ok, %{"epics" => epics, "stories" => stories}}
+	{:ok, %{epics: epics, stories: stories}}
       _ ->
 	:error
     end
   end
   
 
-  @spec get_backlog_data(entity_type) :: {:ok, [...]} | :error
-  defp get_backlog_data(entity_type) do
-    headers = ["X-TrackerToken": get_api_token()]
+  def get_stories(project_id, api_token) do
+    stories = get_backlog_data(:stories, project_id, api_token)
+    case stories do
+      {:ok, _} -> {:ok, %{stories: stories}}
+      _        ->
+	:error
+      end
+  end
+
+  def get_epics(project_id, api_token) do
+    epics = get_backlog_data(:epics, project_id, api_token)
+    case epics do
+      {:ok, _} -> {:ok, %{epics: epics}}
+      _        -> :error
+    end
+  end
+  
+	    
+	    
+
+  
+  @spec get_backlog_data(entity_type, integer, String.t) :: {:ok, [...]} | :error
+  defp get_backlog_data(entity_type, project_id, api_token) do
+    headers = ["x-trackertoken": get_api_token()]
     url_for(entity_type)
       |> HTTPoison.get(headers)
       |> parse_response
