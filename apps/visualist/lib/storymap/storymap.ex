@@ -10,7 +10,6 @@ defmodule StoryMap.HeaderEntry do
   ]
   
   @type t :: %HeaderEntry{position: non_neg_integer, text: String.t}
-  
 end
 
 
@@ -24,7 +23,6 @@ defmodule StoryMap.Card do
   ]
   
   @type t :: %Card{title: String.t, desc: String.t, link: String.t}
-
 end
 
 
@@ -44,7 +42,6 @@ defmodule StoryMap.MapCell do
   def add_card(map_cell, card) do
     put_in(map_cell.cards, card)
   end
-  
 end
 
 
