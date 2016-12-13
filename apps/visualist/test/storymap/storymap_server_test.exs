@@ -3,13 +3,13 @@ defmodule StoryMap.ServerTest do
   
   doctest StoryMap.Server
 
-  alias StoryMap
   alias StoryMap.Server
+  alias StoryMap.StoryMap.SMap
 
   @project_id 1389518
   @api_token "aa6c95ad3b28fa8520fa75b298a533f4"
   
-  setup do
+  setup context do
     {:ok, storymap_server} = Server.start_link(
       %StoryMap.Server.State{project_id: @project_id, api_token: @api_token},
       [name: {:global, __MODULE__}]
@@ -30,10 +30,11 @@ defmodule StoryMap.ServerTest do
   
 
   test "get current state story map", context do
-    default_map = %StoryMap{}
+    default_map = %SMap{}
     assert Server.get_story_map(context[:storymap_server]).story_map == default_map
   end
 
+  
   @tag :pending
   test "set project credentials", context do
   end

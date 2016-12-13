@@ -1,27 +1,21 @@
 defmodule StoryMap.StoryMapTest do
   use ExUnit.Case, async: true
-  doctest StoryMap
+  doctest StoryMap.StoryMap
 
-  alias StoryMap
+  alias StoryMap.StoryMap
   alias StoryMap.HeaderEntry
   alias StoryMap.Card
   alias StoryMap.MapCell
-  # @tag :pending
-  # test "the truth" do
-  #   assert 1 + 1 == 2
-  # end
+  alias StoryMap.SMap
 
-  # test "create new story map" do
-  #   assert StoryMap.new() == %StoryMap{}
-  # end
   
   test "add column headers from map" do
     expected_headers = [
-      %HeaderEntry{position: 1, text: "col_1"},
+      %StoryMap.HeaderEntry{position: 1, text: "col_1"},
       %HeaderEntry{position: 2, text: "col_2"},
       %HeaderEntry{position: 3, text: "col_3"} ]
 
-    story_map = StoryMap.add_col_headers(%StoryMap{}, expected_headers)
+    story_map = StoryMap.add_col_headers(%SMap{}, expected_headers)
     assert story_map.col_headers == expected_headers
   end
 
@@ -32,7 +26,7 @@ defmodule StoryMap.StoryMapTest do
       %HeaderEntry{position: 2, text: "row_2"},
       %HeaderEntry{position: 3, text: "row_3"} ]
 
-    story_map = StoryMap.add_row_headers(%StoryMap{}, expected_headers)
+    story_map = StoryMap.add_row_headers(%SMap{}, expected_headers)
     assert story_map.row_headers == expected_headers
   end
 
@@ -45,7 +39,7 @@ defmodule StoryMap.StoryMapTest do
 		  %Card{title: "c", desc: "c-desc", link: "---"}]}
     ]
 
-    story_map = StoryMap.add_cells(%StoryMap{}, expected_cells)
+    story_map = StoryMap.add_cells(%SMap{}, expected_cells)
     assert story_map.cells == expected_cells
   end
 

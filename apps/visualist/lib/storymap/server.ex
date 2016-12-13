@@ -7,14 +7,13 @@ defmodule StoryMap.Server do
   """
   use GenServer
 
-  alias StoryMap
+  alias StoryMap.StoryMap.SMap
 
   defmodule State do
     @enforce_key [:project_id, :api_token]
-    defstruct [:project_id, :api_token, story_map: %StoryMap{}]
-    @type t :: %State{project_id: integer, api_token: String.t, story_map: StoryMap.t}
+    defstruct [:project_id, :api_token, story_map: %SMap{}]
+    @type t :: %State{project_id: integer, api_token: String.t, story_map: SMap.t}
   end
-
 
   @name __MODULE__
 
@@ -43,6 +42,7 @@ defmodule StoryMap.Server do
   # GenServer Callbacks
   #
   def init(initial_state) do
+    IO.puts("starting StoryMap.Server")
     {:ok, initial_state}
   end
   
@@ -53,6 +53,12 @@ defmodule StoryMap.Server do
   
   def handle_call(:get_story_map, _from, story_map_state) do
     {:reply, story_map_state, story_map_state}
+  end
+
+  # Handle out-of-band messages, this is optional.
+  def handle_info(msg, state) do
+    IO.puts("received #{inspect msg}")
+    {:noreply, state}
   end
   
 end
