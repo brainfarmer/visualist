@@ -1,4 +1,4 @@
-defmodule StoryMap.StoryMap do
+defmodule Mapping.StoryMap do
 
   defmodule HeaderEntry do
     defstruct [

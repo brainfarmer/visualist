@@ -9,7 +9,7 @@ defmodule Visualist.Supervisor do
   def init(:ok) do
     IO.puts("Starting #{inspect(__MODULE__)}")
     children = [
-      supervisor(StoryMap.Supervisor, [])
+      supervisor(Mapping.Supervisor, [])
     ]
 
     supervise(children, strategy: :rest_for_one)

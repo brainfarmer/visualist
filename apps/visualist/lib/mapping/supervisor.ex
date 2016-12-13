@@ -1,4 +1,4 @@
-defmodule StoryMap.Supervisor do
+defmodule Mapping.Supervisor do
   use Supervisor
 
   @name __MODULE__
@@ -10,11 +10,11 @@ defmodule StoryMap.Supervisor do
 
   
   def init(:ok) do
-    IO.puts("Starting StoryMap.Supervisor")
+    IO.puts("Starting Mapping.Supervisor")
     children = [
       # Define workkers and child supervisors to be supervised
       # worker(Sequence.Worker, [arg1, arg2, arg3])
-      worker(StoryMap.Server, [StoryMap.Server])
+      worker(Mapping.Server, [Mapping.Server])
     ]
 
     supervise(children, strategy: :one_for_one)

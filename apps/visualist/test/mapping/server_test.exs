@@ -1,17 +1,15 @@
-defmodule StoryMap.ServerTest do
+defmodule Mapping.ServerTest do
   use ExUnit.Case, async: true
   
-  doctest StoryMap.Server
-
-  alias StoryMap.Server
-  alias StoryMap.StoryMap.SMap
+  alias Mapping.Server
+  alias Mapping.StoryMap.SMap
 
   @project_id 1389518
   @api_token "aa6c95ad3b28fa8520fa75b298a533f4"
   
   setup context do
     {:ok, storymap_server} = Server.start_link(
-      %StoryMap.Server.State{project_id: @project_id, api_token: @api_token},
+      %Server.State{project_id: @project_id, api_token: @api_token},
       [name: {:global, __MODULE__}]
     )
 

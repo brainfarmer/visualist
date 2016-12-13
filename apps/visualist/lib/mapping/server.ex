@@ -1,4 +1,4 @@
-defmodule StoryMap.Server do
+defmodule Mapping.Server do
   @moduledoc """
   Server for generating and maintaing a Story Map from backlog data
 
@@ -7,7 +7,7 @@ defmodule StoryMap.Server do
   """
   use GenServer
 
-  alias StoryMap.StoryMap.SMap
+  alias Mapping.StoryMap.SMap
 
   defmodule State do
     @enforce_key [:project_id, :api_token]
