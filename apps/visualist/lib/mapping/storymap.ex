@@ -46,8 +46,8 @@ defmodule Mapping.StoryMap do
     @type t :: %SMap{col_headers: [HeaderEntry.t], row_headers: [HeaderEntry.t],
 		     cells: [MapCell.t]}
   end
-
-
+  
+    
   @spec add_col_headers(SMap.t, list(%HeaderEntry{})) :: %SMap{}
   def add_col_headers(story_map, entries) do
     put_in(story_map.col_headers, entries)

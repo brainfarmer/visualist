@@ -9,14 +9,18 @@ defmodule Mapping.Supervisor do
   end
 
   
+  def start_mapping_worker(project_id, api_token) do
+    Supervisor.start_child(@name, [project_id, api_token])
+  end
+
+
   def init(:ok) do
-    IO.puts("Starting Mapping.Supervisor")
     children = [
       # Define workkers and child supervisors to be supervised
       # worker(Sequence.Worker, [arg1, arg2, arg3])
-      worker(Mapping.Server, [Mapping.Server])
+      worker(Mapping.Server, [], restart: :temporary)
     ]
 
-    supervise(children, strategy: :one_for_one)
+    supervise(children, strategy: :simple_one_for_one)
   end
 end
