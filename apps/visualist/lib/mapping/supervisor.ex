@@ -9,8 +9,8 @@ defmodule Mapping.Supervisor do
   end
 
   
-  def start_mapping_worker(project_id, api_token) do
-    Supervisor.start_child(@name, [project_id, api_token])
+  def start_mapping_worker(supervisor, project_id, api_token) do
+    Supervisor.start_child(supervisor, [project_id, api_token])
   end
 
 
