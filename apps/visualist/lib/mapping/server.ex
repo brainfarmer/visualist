@@ -19,14 +19,15 @@ defmodule Mapping.Server do
 
   #
   # API External interface
-  #
-  @spec start_link(integer, String.t) :: {:ok, pid}
-  def start_link(project_id, api_token, opts \\[]) do
-    opts = Keyword.put_new(opts, :name, @name)
-    GenServer.start_link(__MODULE__, [project_id, api_token], opts)
+ 
+
+  @spec start_link([]) :: {:ok, pid}
+   def start_link([name, project_id, api_token]) do
+    GenServer.start_link(__MODULE__, [project_id, api_token], [[name: name]])
   end
 
-
+  
+  @spec update_credentials(pid, integer, String.t) :: State.t
   def update_credentials(server, project_id, api_token) do
     GenServer.call(server, {:update_credentials, {project_id, api_token}})
   end
@@ -40,21 +41,24 @@ defmodule Mapping.Server do
   @spec get_story_map(pid()) :: {:ok, StoryMap.t} | :error
   def get_story_map(server) do
     GenServer.call(server, :get_story_map)
-  end
-  
+  end  
 
   #
   # GenServer Callbacks
   #
+
   def init([project_id, api_token]) do
     IO.puts("starting StoryMap.Server")
-    initial_state = %State{project_id: project_id, api_token: api_token, story_map: %SMap{}}
+    initial_state = %State{project_id: project_id,
+			  api_token: api_token,
+			  story_map: %SMap{}}
     {:ok, initial_state}
   end
 
   
   def handle_call({:update_credentials, {id, token}}, _from, state) do
     new_state = Map.put(state, :project_id, id)
+
     new_state = Map.put(new_state, :api_token, token)
     {:reply, :ok, new_state}
   end

@@ -3,10 +3,10 @@ defmodule Mapping.SupervisorTest do
 
 #  alias Mapping.Supervisor
 
-  setup context do
+   setup context do
     # Use context.test as name to avoid conflict with already started supervisors
     # when tests are running acynchronously
-    {:ok, sup} =Mapping.Supervisor.start_link(name: context.test)
+    {:ok, sup} = Mapping.Supervisor.start_link(name: context.test)
     {:ok, sup: sup}
   end
 
@@ -17,9 +17,10 @@ defmodule Mapping.SupervisorTest do
   
 
   test "Supervisor dynamically creates workers", %{sup: sup} do
-    Mapping.Supervisor.start_mapping_worker(sup,1, "x")
+    Mapping.Supervisor.start_mapping_worker(sup, "test_1", 1, "token")
+    Mapping.Supervisor.start_mapping_worker(sup, "test_2", 2, "x")
     %{workers: workers} = Supervisor.count_children(sup)
-    assert workers > 0
+    assert workers == 2
   end
 
 end

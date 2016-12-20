@@ -11,8 +11,7 @@ defmodule Mapping.ServerTest do
   @updated_token "a"
   
   setup  do
-    {:ok, mapping_server} = Server.start_link(@project_id, @api_token,
-      [name: {:global, __MODULE__}] )
+    {:ok, mapping_server} = Server.start_link(["test", @project_id, @api_token] )
 
     {:ok, mapping_server: mapping_server}
   end
@@ -35,7 +34,7 @@ defmodule Mapping.ServerTest do
     assert %{project_id: @updated_id, api_token: @updated_token} = Server.get_state(mapping_server)
   end
 
-  @tag :pending
+   @tag :pending
   test "generate story map", %{mapping_server: mapping_server} do
   end
   
