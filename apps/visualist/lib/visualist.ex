@@ -14,6 +14,7 @@ defmodule Visualist do
     children = [
       # Starts a worker by calling: Visualist.Worker.start_link(arg1, arg2, arg3)
       # worker(Visualist.Worker, [arg1, arg2, arg3]),
+      supervisor(Task.Supervisor, [[name: Mapping.TaskSupervisor]]),
       supervisor(Mapping.Supervisor, [])
     ]
 

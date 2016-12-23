@@ -48,22 +48,42 @@ defmodule Mapping.StoryMap do
   end
   
     
-  @spec add_col_headers(SMap.t, list(%HeaderEntry{})) :: %SMap{}
-  def add_col_headers(story_map, entries) do
-    put_in(story_map.col_headers, entries)
+
+  def start_link() do
+    Agent.start(fn ->
+     %{project_id: nil, api_token: nil, storymap: %SMap{}} end)
   end
   
-  @spec add_row_headers(%SMap{}, list(%HeaderEntry{})) :: %SMap{}
-  def add_row_headers(story_map, entries) do
-    put_in(story_map.row_headers, entries)
+
+  def update_project_id(storymap, project_id) do
+    Agent.update(storymap, &Map.put(&1, :project_id, project_id))
   end
 
-  @spec add_cells(%SMap{}, list(%MapCell{})) :: %SMap{}
-  def add_cells(story_map, cell_list) do
-    put_in(story_map.cells, cell_list)
+  
+  def update_api_token(storymap, token) do
+    Agent.update(storymap, &Map.put(&1, :api_token, token))
+  end
+
+  
+  def update_map(storymap, map= %SMap{}) do
+    Agent.update(storymap, &Map.put(&1, :storymap, map))
+  end
+
+
+  def get_project_id(storymap) do
+    Agent.get(storymap, &Map.get(&1, :project_id))
+  end
+
+
+  def get_api_token(storymap) do
+    Agent.get(storymap, &Map.get(&1, :api_token))
   end
   
-      
+
+  def get_map(storymap) do
+    Agent.get(storymap, &Map.get(&1, :storymap))
+  end
+  
 end
 
 

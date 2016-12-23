@@ -8,43 +8,26 @@ Provides Pivotal Tracker API functions
   @type entity_type :: :epics | :stories
   
   @doc"""
-  Return epics and stories
+  Get backlog data based on `entity_type`
+  valid values:
+     :epics - gets epics
+     :stories - get stories
+
+  Invalid `entity_type` returns {:error, :unknown_commnad}
   """
-  @spec get_epics_and_stories(integer, String.t) :: {:ok, [...]} | :error
-  def get_epics_and_stories(project_id, api_token) do
-    epics_results = get_backlog_data(:epics, project_id, api_token)
-    stories_results = get_backlog_data(:stories, project_id, api_token)
-
-    case {epics_results, stories_results} do
-      { {:ok, epics}, {:ok, stories} } ->
-	{:ok, %{epics: epics, stories: stories}}
+  @spec get(atom, integer, String.t) :: {:ok, []} | {:error, :unknown_command}
+  def get(entity_type, project_id, api_token) do
+    case entity_type do
+      :epics ->
+	get_backlog_data(:epics, project_id, api_token)
+      :stories ->
+	get_backlog_data(:stories, project_id, api_token)
       _ ->
-	:error
+	{:error, :unknown_command}
     end
   end
   
-
-  def get_stories(project_id, api_token) do
-    stories = get_backlog_data(:stories, project_id, api_token)
-    case stories do
-      {:ok, _} -> {:ok, %{stories: stories}}
-      _        ->
-	:error
-      end
-  end
-
-  def get_epics(project_id, api_token) do
-    epics = get_backlog_data(:epics, project_id, api_token)
-    case epics do
-      {:ok, _} -> {:ok, %{epics: epics}}
-      _        -> :error
-    end
-  end
-  
-	    
-	    
-
-  
+	  
   @spec get_backlog_data(entity_type, integer, String.t) :: {:ok, [...]} | :error
   defp get_backlog_data(entity_type, project_id, api_token) do
     headers = ["x-trackertoken": api_token]
@@ -53,12 +36,11 @@ Provides Pivotal Tracker API functions
       |> parse_response
   end
 
-  
+      
   @spec url_for(:atom, integer) :: String.t
   defp url_for(:epics, project_id) do
     @base_url <> "#{project_id}/epics"
   end
-
   
   @spec url_for(:atom, integer) :: String.t
   defp url_for(:stories, project_id) do
