@@ -8,10 +8,5 @@ defmodule Tracker.TaskSupervisor do
     Supervisor.start_child(__MODULE__, :ok, name: opts[:name])
   end
 
+end
 
-  #
-  # Callbacks
-  #
-  def init(:ok) do
-    children = [
-      worker(
