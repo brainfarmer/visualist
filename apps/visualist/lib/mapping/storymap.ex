@@ -49,9 +49,9 @@ defmodule Mapping.StoryMap do
   
     
 
-  def start_link() do
-    Agent.start(fn ->
-     %{project_id: nil, api_token: nil, storymap: %SMap{}} end)
+  def start_link(name) do
+    Agent.start_link(fn ->
+     %{project_id: nil, api_token: nil, storymap: %SMap{}} end, [name: name])
   end
   
 

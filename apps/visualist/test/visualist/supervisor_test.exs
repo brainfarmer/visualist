@@ -15,8 +15,10 @@ defmodule Visualist.SupervisorTest do
     assert nil != Process.whereis(Mapping.Supervisor)
   end
 
-  test "Mapping.TaskSupervisor is started on app start" do
-    assert nil != Process.whereis(Mapping.TaskSupervisor)
+  # Refatoring supervision tree, removing mapping task supervisor
+  # Can delete this test code once refactoring is complete
+  test "Mapping.TaskSupervisor is not started on app start" do
+    assert nil == Process.whereis(Mapping.TaskSupervisor)
   end
   
 end

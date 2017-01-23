@@ -8,8 +8,8 @@ defmodule Mapping.StoryMapTest do
   @token "abc"
   @test_map %SMap{}
   
-  setup  do
-    {:ok, storymap} = StoryMap.start_link()
+  setup context do
+    {:ok, storymap} = StoryMap.start_link(context.test)
     {:ok, storymap: storymap}
   end
 

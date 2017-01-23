@@ -3,37 +3,33 @@ defmodule Mapping.Supervisor do
 
   @name Mapping.Supervisor
 
+  #
+  # Start the supervisor
+  # options:
+  #  :name         - the name to use for the supervisor
+  #  :child_prefix - the prefix to assign to the children's names to avoid
+  #                  `already started` errors during unit test
   def start_link(opts \\[]) do
     opts = Keyword.put_new(opts, :name, @name)
-    Supervisor.start_link(__MODULE__, :ok, name: opts[:name])
+    IO.puts("Starting #{opts[:name]}")
+    Supervisor.start_link(__MODULE__, opts[:child_prefix], name: opts[:name])
   end
 
 
-  # def start_mapping_worker(name, project_id, api_token) do
-  #   Supervisor.start_child(@name, [name: name, project_id, api_token])
-  # end
-  
-  def start_mapping_worker(name, project_id, api_token) do
-    start_mapping_worker(Mapping.Supervisor, name, project_id, api_token)
-  end
-  
-  def start_mapping_worker(sup, name, project_id, api_token) do
-    args = [name: name,
-	    project_id: project_id,
-	    api_token: api_token
-	   ]
-
-    Supervisor.start_child(sup, [args])
-  end
-
-
-  def init(:ok) do
+  def init(child_prefix) do
+    # Prefix children names with name of supervisor to allow for asyn unit testing
+    # If not prefixed the child name will not be unique and `server already running`
+    #  errors will be encountered when running async unit tests
     children = [
       # Define workkers and child supervisors to be supervised
       # worker(Sequence.Worker, [arg1, arg2, arg3])
-      worker(Mapping.Server, [], restart: :transient)
+      worker(Mapping.Server, [[name: Module.concat(child_prefix, Mapping.Server)]]), 
+      supervisor(Mapping.MapsSupervisor,
+      	[[name: Module.concat(child_prefix, Mapping.MapsSupervisor)]],
+      	restart: :permanent)
     ]
 
-    supervise(children, strategy: :simple_one_for_one)
+    supervise(children, strategy: :one_for_all)
   end
+
 end

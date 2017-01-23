@@ -1,0 +1,44 @@
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+
+apps/visualist
+apps/visualist/lib/visualist
+
+apps/story_mapping
+apps/story_mapping/lib/story_mapping/templates
+apps/story_mapping/lib/story_mapping/users
+
+apps/backlog_data/lib/backlog_data/tracker
+
+apps/visualist_web
+
+apps/auth
+apps/auth/lib/auth
+
+apps/admin
+apps/admin/lib/admin
+
+
+
+Use Cases
+Generate a Story Map
+Given: project_id, api_token, map_template, a name for the story map
+
+map_template options:
+ :basic_storymap - Standard definition of a storymap epics, children
+
+- Get Epic backlog data (concurrent task)
+- Get Story backlog data (concurrent task)
+- Get template definition
+--- Synch ---
+- Generate map headers
+- Generate map cells by row
+- complete,
+- current
+, backlog, icebox) (concurrent task)
+--- Synch--
+DONE
+
+
