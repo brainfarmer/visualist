@@ -16,13 +16,14 @@ defmodule Mapping.Supervisor do
   end
 
 
-  def init(child_prefix) do
+  def init(child_prefix \\"") do
     # Prefix children names with name of supervisor to allow for asyn unit testing
     # If not prefixed the child name will not be unique and `server already running`
     #  errors will be encountered when running async unit tests
     children = [
       # Define workkers and child supervisors to be supervised
       # worker(Sequence.Worker, [arg1, arg2, arg3])
+      supervisor(Registry, [:unique, Module.concat(child_prefix, Mapping. Registry)]),
       worker(Mapping.Server, [[name: Module.concat(child_prefix, Mapping.Server)]]), 
       supervisor(Mapping.MapsSupervisor,
       	[[name: Module.concat(child_prefix, Mapping.MapsSupervisor)]],

@@ -50,8 +50,9 @@ defmodule Mapping.StoryMap do
     
 
   def start_link(name) do
+    id = {:via, Registry, {Mapping.Registry, name}}
     Agent.start_link(fn ->
-     %{project_id: nil, api_token: nil, storymap: %SMap{}} end, [name: name])
+      %{project_id: nil, api_token: nil, storymap: %SMap{}} end, [name: id])
   end
   
 

@@ -18,10 +18,10 @@ defmodule Mapping.MapSupervisor do
   def init ([name, proj_id, api_token]) do
     task_sup_name = :"#{name}.MapTaskSupervisor"
     server_name = :"#{name}.MapServer"
-    map_name = :"#{name}.Storymap"
+    story_map_name = :"#{name}.StoryMap"
     children =[
       supervisor(Task.Supervisor, [[name: task_sup_name]]),
-      worker(Mapping.StoryMap,[map_name], restart: :transient),
+      worker(Mapping.StoryMap,[story_map_name], restart: :transient),
       worker(Mapping.MapServer, [server_name, proj_id, api_token], restart: :transient)
     ]
 

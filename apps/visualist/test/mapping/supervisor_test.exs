@@ -16,7 +16,13 @@ defmodule Mapping.SupervisorTest do
   test "Starts Mapping.Server on init", %{sup: sup} do
     child_list = Supervisor.which_children(sup) # list of tuples {id, pid, type, modules}
     assert List.keymember?(child_list, [Mapping.Server], 3) == true
+   end
+
+  test "Starts Registry when started", %{sup: sup} do
+    child_list = Supervisor.which_children(sup)
+    assert List.keymember?(child_list, [Registry], 3) == true
   end
+  
 
   test "Start .MapsSupervisor when started", %{sup: sup} do
     child_list = Supervisor.which_children(sup)  # list of tuples {id, pid, type, modules}
@@ -25,7 +31,7 @@ defmodule Mapping.SupervisorTest do
    
   test "Supervisor dynamically creates map worker supervision tree", %{sup: sup} do
     %{supervisors: sups, workers: workers} = Supervisor.count_children(sup)
-    assert sups == 1
+    assert sups == 2
     assert workers == 1
   end
 

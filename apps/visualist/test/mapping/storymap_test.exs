@@ -8,12 +8,17 @@ defmodule Mapping.StoryMapTest do
   @token "abc"
   @test_map %SMap{}
   
-  setup context do
+  setup context do_
     {:ok, storymap} = StoryMap.start_link(context.test)
-    {:ok, storymap: storymap}
+    {:ok, storymap: storymap, id: context.test}
   end
 
+
+  test "StoryMap registers itself in the Mapping.Registry", %{id: id} do
+    assert [{pid, value}] = Registry.lookup(Mapping.Registry, id)
+  end
   
+
   test "update project id", %{storymap: storymap} do
     assert :ok = StoryMap.update_project_id(storymap, @id)
     assert StoryMap.get_project_id(storymap) == @id

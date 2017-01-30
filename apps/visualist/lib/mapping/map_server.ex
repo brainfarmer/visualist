@@ -4,7 +4,7 @@ defmodule Mapping.MapServer do
   defmodule State do
     defstruct proj_id: nil,
       api_token: nil,
-      name: nil
+      id: nil
     end
     
 
@@ -12,7 +12,8 @@ defmodule Mapping.MapServer do
   # API
   #
   def start_link(name, proj_id, api_token) do
-    GenServer.start_link(__MODULE__, [name, proj_id, api_token], [name])
+    id = {:via, Registry, {Mapping.Registry, name}}
+    GenServer.start_link(__MODULE__, [id, proj_id, api_token], name: id)
   end
 
 
@@ -20,8 +21,8 @@ defmodule Mapping.MapServer do
   #
   # Callbacks
   #
-  def init([name, proj_id, api_token]) do
-    state = %State{name: name, proj_id: proj_id, api_token: api_token}
+  def init([id, proj_id, api_token]) do
+    state = %State{id: id, proj_id: proj_id, api_token: api_token}
     {:ok,  state}
   end
 
@@ -29,5 +30,6 @@ defmodule Mapping.MapServer do
   #
   # Private
   #
+  
 
 end
