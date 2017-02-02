@@ -7,22 +7,15 @@ defmodule Mapping.StoryMapping do
   end
 
   
-  def story_map_by_column(headers, stories) do
-    #filter where story has same label as map
-    # Get the header's label to match against
-    # Get the list of labels from tthe stories
-    # enum the list and match against the epic label
-    # if matches, add the map to the column list
-    Enum.map(headers, &filter_stories_by_header(&1, stories))
+  def stories_by_column_label([], stories, accumulator) do
+    accumulator
+  end
+  
+  def stories_by_column_label([header | tail], stories, accumulator \\[]) do
+    new_accumulator = accumulator ++ filter_stories_by_header(header, stories)
+    stories_by_column_label(tail, stories, new_accumulator)
   end
 
-  
-  def filter_stories_by_header(header, stories) do
-    Enum.filter(stories, &has_matching_label(&1, header.label))
-      |> Enum.map(fn(story) ->
-      %{name: Map.get(story, "name"),
-	current_state: Map.get(story, "current_state")} end)
-  end
 
   
   #
@@ -37,7 +30,19 @@ defmodule Mapping.StoryMapping do
     %{name: title, label: label}
   end
 
+  
+  defp filter_stories_by_header(header, stories) do
+    Enum.filter(stories, &has_matching_label(&1, header.label))
+      |> Enum.map(fn(story) ->
+      %{col_label: header.label,
+	id: Map.get(story, "id"),
+	name: Map.get(story, "name"),
+	current_state: Map.get(story, "current_state")
+       }
+    end)
+  end
 
+  
   defp has_matching_label(story, label) do
     Map.get(story, "labels")
     |> Enum.any?(fn(x) -> x ==  %{"name" => label} end)

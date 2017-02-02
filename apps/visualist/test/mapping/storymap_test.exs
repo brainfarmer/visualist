@@ -8,7 +8,7 @@ defmodule Mapping.StoryMapTest do
   @token "abc"
   @test_map %SMap{}
   
-  setup context do_
+  setup context do
     {:ok, storymap} = StoryMap.start_link(context.test)
     {:ok, storymap: storymap, id: context.test}
   end
@@ -41,7 +41,7 @@ defmodule Mapping.StoryMapTest do
     assert_raise(FunctionClauseError, ~r/^no function clause matching/, fn ->
       StoryMap.update_map(storymap, %{}) end)
   end
-  
+ 
   
   
   
