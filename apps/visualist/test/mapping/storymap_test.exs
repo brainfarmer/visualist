@@ -41,9 +41,5 @@ defmodule Mapping.StoryMapTest do
     assert_raise(FunctionClauseError, ~r/^no function clause matching/, fn ->
       StoryMap.update_map(storymap, %{}) end)
   end
- 
-  
-  
-  
   
 end
