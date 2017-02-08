@@ -7,6 +7,11 @@ defmodule Mapping.Server do
   """
   use GenServer
 
+  
+  alias Mapping.MapsSupervisor
+  alias Mapping.MapServer
+  
+
   @name __MODULE__
 
   #
@@ -20,6 +25,12 @@ defmodule Mapping.Server do
     GenServer.start_link(__MODULE__, :ok, name: opts[:name])
   end
 
+
+  def get_story_map(server, name, proj_id, api_token) do
+    GenServer.call(server, {:get_story_map, name, proj_id, api_token})
+  end
+  
+
   
   #
   # GenServer Callbacks
@@ -28,5 +39,17 @@ defmodule Mapping.Server do
   def init(:ok) do
     {:ok, {}}
   end
+
+
+  def handle_call({:get_story_map, name,  proj_id, api_token}, _from, state) do
+    # start map server aggregate
+    MapsSupervisor.start_map_server(MapsSupervisor, name, proj_id, api_token)
+    [{map_server, _}] = Registry.lookup(Mapping.Registry, name)
+    case  Mapping.MapServer.get_story_map(map_server, proj_id, api_token) do
+      {:ok, story_map} -> {:reply, {:ok, story_map}, state}
+      {:error, message} -> {:reply, {:error, message}, state}
+    end
+  end
+  
 
 end

@@ -39,7 +39,8 @@ defmodule Mapping.StoryMapping do
   
   defp has_matching_label(story, label) do
     Map.get(story, "labels")
-    |> Enum.any?(fn(x) -> x ==  %{"name" => label} end)
+    #    |> Enum.any?(fn(x) -> x ==  %{"name" => label} end)
+    |> Enum.any?(fn(x) -> Map.to_list(x) |> List.keymember?(label, 1) end)
   end
 
 

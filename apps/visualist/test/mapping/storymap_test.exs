@@ -40,6 +40,5 @@ defmodule Mapping.StoryMapTest do
   test "no matching function for update_stormy with simple %{}", %{storymap: storymap} do
     assert_raise(FunctionClauseError, ~r/^no function clause matching/, fn ->
       StoryMap.update_map(storymap, %{}) end)
-  end
-  
+  end  
 end

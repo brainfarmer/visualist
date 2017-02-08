@@ -23,7 +23,7 @@ defmodule Mapping.StoryMappingTest do
 
   @stories [
     %{"name" => "story 1", "current_state" => "unstarted", "id" => "1",
-      "labels" => [%{"name" => "label_C"}, %{"name" => "sdaf"}]},
+      "labels" => [%{"kind" => "label", "name" => "label_C"}, %{"name" => "sdaf"}]},
     
     %{"name" => "story 2", "current_state" => "accepted", "id" => "2",
       "labels" => [%{"name" => "label_A"}, %{"name" => "sdaf"}]},
