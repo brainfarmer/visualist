@@ -1,6 +1,8 @@
 defmodule Mapping.MapsSupervisor do
   use Supervisor
 
+  alias Mapping.MapsSupervisor
+
   @name __MODULE__
 
   #
