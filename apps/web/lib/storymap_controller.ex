@@ -14,7 +14,7 @@ defmodule Web.StoryMapController do
 
 
   defp _get_story_map(conn, project_id, api_token) do
-    case Mapping.get_story_map(project_id, api_token) do
+    case Visualist.get_story_map(project_id, api_token) do
       {:ok, storymap} ->
 	{:ok, storymap_json} = JSON.encode(storymap)
 	Conn.resp(conn, 200, storymap_json)

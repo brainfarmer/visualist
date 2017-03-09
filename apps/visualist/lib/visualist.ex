@@ -1,26 +1,16 @@
 defmodule Visualist do
-  use Application
+  @moduledoc """
+  Contains main business logic for Visualist
+  """
 
-  # def start(_type, args) do
-  #   Visualist.Supervisor.start_link()
-  # end
-  
-  # See http://elixir-lang.org/docs/stable/elixir/Application.html
-  # for more information on OTP Applications
-  def start(_type, _args) do
-    import Supervisor.Spec, warn: false
-
-    # Define workers and child supervisors to be supervised
-    children = [
-      # Starts a worker by calling: Visualist.Worker.start_link(arg1, arg2, arg3)
-      # worker(Visualist.Worker, [arg1, arg2, arg3]),
-      supervisor(Mapping.Supervisor, [])
-    ]
-
-    # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
-    # for other strategies and supported options
-    opts = [strategy: :rest_for_one, name: Visualist.Supervisor]
-    Supervisor.start_link(children, opts)
+  def get_story_map(proj_id, api_token, opts \\[]) do
+    Mapping.Server.get_story_map(Mapping.Server, random_name(), proj_id, api_token)
   end
+
+
+  defp random_name() do
+    :rand.uniform()
+  end
+  
 end
 
