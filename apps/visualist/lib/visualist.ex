@@ -4,7 +4,8 @@ defmodule Visualist do
   """
 
   def get_story_map(proj_id, api_token, opts \\[]) do
-    Mapping.Server.get_story_map(Mapping.Server, random_name(), proj_id, api_token)
+    name = random_name()
+    Mapping.Server.get_story_map(Mapping.Server, name, proj_id, api_token)
   end
 
 

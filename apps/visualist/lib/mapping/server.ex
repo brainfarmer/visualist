@@ -27,7 +27,9 @@ defmodule Mapping.Server do
 
 
   def get_story_map(server, name, proj_id, api_token) do
-    GenServer.call(server, {:get_story_map, name, proj_id, api_token})
+    story_map = GenServer.call(server, {:get_story_map, name, proj_id, api_token})
+    Supervisor.stop(:"#{name}.MapSupervisor")
+    story_map
   end
   
 
